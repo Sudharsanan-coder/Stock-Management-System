@@ -1,6 +1,8 @@
 package Stock_Management;
 import java.util.HashMap;
 
+//Inventory
+
 public class Inventory {
     private HashMap<String, Product> inventory;
 

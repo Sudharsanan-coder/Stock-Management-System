@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     private static final Inventory inventory = new Inventory();
     private static final Scanner scanner = new Scanner(System.in);
-
+// Main
     public static void main(String[] args) {
         while (true) {
             System.out.println("===== Inventory Management =====");
