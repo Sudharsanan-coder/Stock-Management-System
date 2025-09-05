@@ -35,12 +35,17 @@ public class Main {
     }
 
     private static void addNewProduct() {
+        System.out.print("Enter Product Type (1. Normal  2. Perishable): ");
+        int type = Integer.parseInt(scanner.nextLine());
+
         System.out.print("Enter Product ID: ");
         String productId = scanner.nextLine();
+
         if (inventory.searchById(productId) != null) {
             System.out.println("Product ID already exists!");
             return;
         }
+
         System.out.print("Enter Product Name: ");
         String productName = scanner.nextLine();
         System.out.print("Enter Category: ");
@@ -52,13 +57,23 @@ public class Main {
         System.out.print("Enter Supplier Name: ");
         String supplier = scanner.nextLine();
 
-        Product product = new Product(productId, productName, category, quantity, price, supplier);
+        Product product; // Parent reference
+
+        if (type == 2) {
+            System.out.print("Enter Expiry Date: ");
+            String expiryDate = scanner.nextLine();
+            product = new PerishableProduct(productId, productName, category, quantity, price, supplier, expiryDate);
+        } else {
+            product = new Product(productId, productName, category, quantity, price, supplier);
+        }
+
         if (inventory.addProduct(product)) {
             System.out.println("Product added successfully!");
         } else {
             System.out.println("Failed to add product.");
         }
     }
+
 
     private static void updateStock() {
         System.out.print("Enter Product ID: ");
